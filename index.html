@@ -15,7 +15,6 @@
   --text: #1c1c1c;
   --muted: #555;
 }
-
 body {
   font-family: "Noto Sans", "Noto Serif SC", sans-serif;
   color: var(--text);
@@ -24,7 +23,6 @@ body {
   padding: 0;
   line-height: 1.7;
 }
-
 a { color: var(--accent); text-decoration: none; }
 
 /* ---------- Layout ---------- */
@@ -36,7 +34,6 @@ a { color: var(--accent); text-decoration: none; }
   gap: 30px;
   padding: 0 25px 80px;
 }
-
 aside {
   background: var(--light);
   border: 1px solid var(--border);
@@ -44,67 +41,75 @@ aside {
   padding: 25px;
   text-align: center;
 }
-
 main {
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 25px 35px;
 }
 
-/* ---------- Image Flip + Zoom Animation ---------- */
+/* ---------- Profile Flip Image (Fixed & Responsive) ---------- */
 .photo-wrapper {
-  width: 150px;
-  height: 150px;
-  margin: 0 auto 14px;
-  perspective: 900px;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 18px;
+  perspective: 1000px;
 }
 
 .flip-card {
   width: 100%;
   height: 100%;
-  transition: transform .7s ease;
-  transform-style: preserve-3d;
   position: relative;
+  transform-style: preserve-3d;
+  transition: transform .7s ease;
 }
 
 .photo-wrapper:hover .flip-card {
-  transform: rotateY(180deg) scale(1.15);
+  transform: rotateY(180deg) scale(1.1);
 }
 
 .flip-side {
   width: 100%;
   height: 100%;
   position: absolute;
-  backface-visibility: hidden;
+  left: 0;
+  top: 0;
   border-radius: 50%;
-  border: 3px solid var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  overflow: hidden;
+  backface-visibility: hidden;
+  border: 4px solid var(--accent);
 }
 
-/* front image */
 .flip-front img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 50%;
 }
 
-/* back side text */
 .flip-back {
-  background: #0a5ad7;
-  color: white;
-  font-size: 14px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 10px;
+  padding: 12px;
   transform: rotateY(180deg);
 }
 
-/* Enable tap flip on mobile */
+/* ---------- Responsive ---------- */
 @media (max-width: 850px) {
+  .cv-container {
+    grid-template-columns: 1fr;
+    padding: 15px;
+  }
+  main { padding: 20px; }
+  .photo-wrapper {
+    width: 170px;
+    height: 170px;
+  }
   .photo-wrapper:active .flip-card {
-    transform: rotateY(180deg) scale(1.15);
+    transform: rotateY(180deg) scale(1.1);
   }
 }
 
@@ -115,38 +120,34 @@ main {
   color: var(--accent);
   margin-bottom: 2px;
 }
-
 .ch-name {
   font-family: "Noto Serif SC";
   font-size: 18px;
   color: var(--muted);
   margin-bottom: 10px;
 }
-
 .title {
   font-size: 15px;
   color: var(--muted);
   margin-bottom: 20px;
 }
 
+/* ---------- Contact ---------- */
 .contact {
   text-align: left;
   font-size: 14px;
   line-height: 1.6;
   margin-top: 12px;
 }
-
 .contact b { color: var(--accent); }
-
 .divider {
   height: 1px;
   background: var(--border);
   margin: 20px 0;
 }
 
-/* ---------- Section Right ---------- */
+/* ---------- Sections ---------- */
 section { margin-bottom: 25px; }
-
 section h2 {
   font-size: 18px;
   color: var(--accent);
@@ -154,7 +155,6 @@ section h2 {
   padding-left: 10px;
   margin-bottom: 12px;
 }
-
 .item {
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -162,7 +162,6 @@ section h2 {
   padding: 10px 14px;
   margin-bottom: 10px;
 }
-
 .item strong { color: var(--accent); }
 
 .badges {
@@ -171,7 +170,6 @@ section h2 {
   gap: 8px;
   margin-top: 6px;
 }
-
 .badge {
   background: var(--light);
   border: 1px solid var(--border);
@@ -189,14 +187,10 @@ footer {
   margin-top: 40px;
 }
 
-/* ---------- Responsive ---------- */
-@media (max-width: 850px) {
-  .cv-container { grid-template-columns: 1fr; padding: 15px; }
-  main { padding: 20px; }
-}
-
 /* ---------- Print ---------- */
 @media print {
+  body { background: #fff; color: #000; }
+  .cv-container { gap: 15px; padding: 0; }
   aside, main { border: none; }
   .badge { border: 1px solid #000; color: #000; background: none; }
 }
@@ -206,13 +200,13 @@ footer {
 <body>
 
 <div class="cv-container">
-
   <!-- Left Column -->
   <aside>
 
-    <!-- Flip Image -->
+    <!-- Updated Profile Flip -->
     <div class="photo-wrapper">
       <div class="flip-card">
+
         <div class="flip-side flip-front">
           <img src="profile1.jpg" alt="Profile Photo">
         </div>
@@ -222,14 +216,16 @@ footer {
           Computer Science Department<br>
           Shah Abdul Latif University
         </div>
+
+        <br>
       </div>
+
     </div>
 
+    
     <div class="name">Zahid Ali</div>
     <div class="ch-name">阿里</div>
-
-    <!-- Updated Title -->
-    <div class="title">Lecturer<br>Computer Science Department<br>Shah Abdul Latif University</div>
+    <div class="title">Lecturer<br>Computer Science Department</div>
 
     <div class="divider"></div>
 
@@ -263,11 +259,11 @@ footer {
 
   <!-- Right Column -->
   <main>
-
     <section>
       <h2>个人简介 / Profile</h2>
       <p>
-        Computer Science graduate now serving as a Lecturer with teaching and research experience. Skilled in AI, software development, and data analytics. Focused on advanced research in Artificial Intelligence, Cloud Computing, and Cyber Security.
+        Computer Science graduate with university teaching and research experience. Skilled in AI, software development, and data analytics. 
+        Interested in advanced research in Artificial Intelligence, Cloud Computing, and Cyber Security to contribute to intelligent system innovation.
       </p>
     </section>
 
@@ -296,13 +292,12 @@ footer {
         <div class="badge">Software Security</div>
       </div>
     </section>
-
-    <!-- Updated Work Experience -->
+    
     <section>
       <h2>工作经历 / Work Experience</h2>
       <div class="item">
-        <strong>Lecturer</strong> — Computer Science Department, Shah Abdul Latif University (Jan 2023 – Present)<br>
-        Deliver lectures, supervise labs, mentor students, develop assignments, and evaluate exams.
+        <strong>Lecturer</strong> — Shah Abdul Latif University (Jan 2023 – Present)<br>
+        Conduct lectures, assist labs, mentor students, develop assignments, and evaluate exams.
       </div>
     </section>
 
@@ -316,27 +311,29 @@ footer {
     <section>
       <h2>项目经历 / Projects</h2>
       <div class="item">
-        <strong>Deep Learning for Big Data</strong> — Undergraduate Thesis
+        <strong>Deep Learning for Big Data</strong> — Undergraduate Thesis (Shah Abdul Latif University)
       </div>
-      <div class="item"><strong>Biometric Attendance System</strong></div>
-      <div class="item"><strong>University Bus Tracking System</strong></div>
-      <div class="item"><strong>Emotion Recognition</strong></div>
+      <div class="item"><strong>Biometric Attendance System</strong> — Mobile-based secure attendance app using fingerprint recognition.</div>
+      <div class="item"><strong>University Bus Tracking System</strong> — Real-time tracking solution for student safety.</div>
+      <div class="item"><strong>Emotion Recognition</strong> — Facial expression analysis using AI for human-computer interaction.</div>
     </section>
 
     <section>
       <h2>推荐人 / References</h2>
       <div class="item">
         <strong>Prof. Dr. Imran Memon</strong><br>
+        Department of Computer Science, Shah Abdul Latif University<br>
         Email: imran.memon@salu.edu.pk | Phone: +92 300 3013424
       </div>
       <div class="item">
         <strong>Prof. Dr. Muhammad Hanif</strong><br>
+        Department of Computer Science, Shah Abdul Latif University<br>
         Email: hanif.tunio@salu.edu.pk | Phone: +92 302 3127917
       </div>
     </section>
 
     <footer>
-      © 2025 Zahid Ali 阿里
+      © 2025 Zahid Ali 阿里 
     </footer>
 
   </main>
