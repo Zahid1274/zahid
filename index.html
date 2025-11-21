@@ -7,7 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Serif+SC:wght@500&display=swap" rel="stylesheet">
 
 <style>
-/* ---------- Base Styles ---------- */
 :root {
   --accent: #0a5ad7;
   --light: #f8faff;
@@ -25,95 +24,56 @@ body {
 }
 a { color: var(--accent); text-decoration: none; }
 
-/* ---------- Layout ---------- */
+/* Container Layout – reduced margins */
 .cv-container {
   max-width: 1100px;
-  margin: 40px auto;
+  margin: 20px auto; /* reduced side margins */
   display: grid;
-  grid-template-columns: 310px 1fr;
-  gap: 30px;
-  padding: 0 25px 80px;
+  grid-template-columns: 300px 1fr;
+  gap: 25px;
+  padding: 0 10px 60px; /* reduced padding */
 }
+
 aside {
   background: var(--light);
   border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 25px;
+  padding: 20px;
   text-align: center;
 }
+
 main {
   border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 25px 35px;
+  padding: 25px 30px;
+  text-align: justify; /* justify profile content */
 }
 
-/* ---------- Profile Flip Image (Fixed & Responsive) ---------- */
+/* Profile Image – No Flip */
 .photo-wrapper {
-  width: 200px;
-  height: 200px;
-  margin: 0 auto 18px;
-  perspective: 1000px;
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 16px;
 }
 
-.flip-card {
+.profile-photo {
   width: 100%;
   height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform .7s ease;
-}
-
-.photo-wrapper:hover .flip-card {
-  transform: rotateY(180deg) scale(1.1);
-}
-
-.flip-side {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
   border-radius: 50%;
-  overflow: hidden;
-  backface-visibility: hidden;
   border: 4px solid var(--accent);
-}
-
-.flip-front img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
 }
 
-.flip-back {
-  background: var(--accent);
-  color: #fff;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 12px;
-  transform: rotateY(180deg);
-}
-
-/* ---------- Responsive ---------- */
+/* Responsive */
 @media (max-width: 850px) {
   .cv-container {
     grid-template-columns: 1fr;
-    padding: 15px;
+    padding: 10px;
   }
-  main { padding: 20px; }
-  .photo-wrapper {
-    width: 170px;
-    height: 170px;
-  }
-  .photo-wrapper:active .flip-card {
-    transform: rotateY(180deg) scale(1.1);
-  }
+  main { padding: 18px; }
 }
 
-/* ---------- Header Left ---------- */
+/* Header Left */
 .name {
   font-size: 24px;
   font-weight: 700;
@@ -132,7 +92,7 @@ main {
   margin-bottom: 20px;
 }
 
-/* ---------- Contact ---------- */
+/* Contact */
 .contact {
   text-align: left;
   font-size: 14px;
@@ -143,24 +103,25 @@ main {
 .divider {
   height: 1px;
   background: var(--border);
-  margin: 20px 0;
+  margin: 18px 0;
 }
 
-/* ---------- Sections ---------- */
-section { margin-bottom: 25px; }
+/* Sections */
+section { margin-bottom: 22px; }
 section h2 {
   font-size: 18px;
   color: var(--accent);
   border-left: 5px solid var(--accent);
   padding-left: 10px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 .item {
   border: 1px solid var(--border);
   border-radius: 8px;
   background: #fff;
-  padding: 10px 14px;
+  padding: 9px 12px;
   margin-bottom: 10px;
+  text-align: justify;
 }
 .item strong { color: var(--accent); }
 
@@ -179,18 +140,16 @@ section h2 {
   color: var(--accent);
 }
 
-/* ---------- Footer ---------- */
 footer {
   text-align: center;
   font-size: 13px;
   color: var(--muted);
-  margin-top: 40px;
+  margin-top: 35px;
 }
 
-/* ---------- Print ---------- */
 @media print {
   body { background: #fff; color: #000; }
-  .cv-container { gap: 15px; padding: 0; }
+  .cv-container { gap: 12px; padding: 0; }
   aside, main { border: none; }
   .badge { border: 1px solid #000; color: #000; background: none; }
 }
@@ -198,31 +157,13 @@ footer {
 </head>
 
 <body>
-
 <div class="cv-container">
-  <!-- Left Column -->
+
   <aside>
-
-    <!-- Updated Profile Flip -->
     <div class="photo-wrapper">
-      <div class="flip-card">
-
-        <div class="flip-side flip-front">
-          <img src="profile1.jpg" alt="Profile Photo">
-        </div>
-
-        <div class="flip-side flip-back">
-          Lecturer<br>
-          Computer Science Department<br>
-          Shah Abdul Latif University
-        </div>
-
-        <br>
-      </div>
-
+      <img src="profile1.jpg" class="profile-photo" alt="Profile Photo">
     </div>
 
-    
     <div class="name">Zahid Ali</div>
     <div class="ch-name">阿里</div>
     <div class="title">Lecturer<br>Computer Science Department</div>
@@ -257,13 +198,11 @@ footer {
     </div>
   </aside>
 
-  <!-- Right Column -->
   <main>
     <section>
       <h2>个人简介 / Profile</h2>
       <p>
-        Computer Science graduate with university teaching and research experience. Skilled in AI, software development, and data analytics. 
-        Interested in advanced research in Artificial Intelligence, Cloud Computing, and Cyber Security to contribute to intelligent system innovation.
+        Computer Science graduate with university teaching and research experience. Skilled in AI, software development, and data analytics. Interested in advanced research in Artificial Intelligence, Cloud Computing, and Cyber Security to contribute to intelligent system innovation.
       </p>
     </section>
 
@@ -275,6 +214,7 @@ footer {
         Thesis: Deep Learning for Big Data<br>
         Supervisor: Prof. Dr. Imran Memon
       </div>
+
       <div class="item">
         <strong>Pre-Engineering (Intermediate)</strong><br>
         Government Degree College (2016 – 2018)
@@ -292,7 +232,7 @@ footer {
         <div class="badge">Software Security</div>
       </div>
     </section>
-    
+
     <section>
       <h2>工作经历 / Work Experience</h2>
       <div class="item">
@@ -310,9 +250,7 @@ footer {
 
     <section>
       <h2>项目经历 / Projects</h2>
-      <div class="item">
-        <strong>Deep Learning for Big Data</strong> — Undergraduate Thesis (Shah Abdul Latif University)
-      </div>
+      <div class="item"><strong>Deep Learning for Big Data</strong> — Undergraduate Thesis (Shah Abdul Latif University)</div>
       <div class="item"><strong>Biometric Attendance System</strong> — Mobile-based secure attendance app using fingerprint recognition.</div>
       <div class="item"><strong>University Bus Tracking System</strong> — Real-time tracking solution for student safety.</div>
       <div class="item"><strong>Emotion Recognition</strong> — Facial expression analysis using AI for human-computer interaction.</div>
@@ -332,12 +270,9 @@ footer {
       </div>
     </section>
 
-    <footer>
-      © 2025 Zahid Ali 阿里 
-    </footer>
-
+    <footer>© 2025 Zahid Ali 阿里</footer>
   </main>
-</div>
 
+</div>
 </body>
 </html>
